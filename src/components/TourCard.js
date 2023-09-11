@@ -29,18 +29,17 @@ const theme = createTheme({
     }
 })
 
-const TourCard = () => {
+const TourCard = ({ tour }) => {
     return (
 
         <Grid item xs={3}>
             <ThemeProvider theme={theme}>
                 <Paper elevation={3}>
-                    <img src='https://images.unsplash.com/photo-1551963831-b3b1ca40c98e'
-                        className='img' />
+                    <img src={tour.image} className='img' />
 
                     <Box paddingX={1}>
                         <Typography variant='subtitle1'>
-                            So Delicios Dish
+                            {tour.name}
                         </Typography>
                         <Box sx={{
                             display: "flex",
@@ -48,15 +47,15 @@ const TourCard = () => {
                         }}
                             marginTop={2}>
                             <AccessTime sx={{ width: 12.5 }} />
-                            <Typography marginLeft={0.5}>5 Hours</Typography>
+                            <Typography marginLeft={0.5}>{tour.duration} Hours</Typography>
                         </Box>
                         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                            <Rating value={4.5} precision={.5} size='small' readOnly />
-                            <Typography marginLeft={0.5}>4.5</Typography>
-                            <Typography variant='subtitle2' marginLeft={0.5}>(655 reviews)</Typography>
+                            <Rating value={tour.rating} precision={.5} size='small' readOnly />
+                            <Typography marginLeft={0.5}>{tour.rating}</Typography>
+                            <Typography variant='subtitle2' marginLeft={0.5}>({tour.numberOfReviews} reviews)</Typography>
                         </Box>
                         <Typography variant='h6' component='h3' marginTop={0}>
-                            From C $147
+                            From C ${tour.price}
                         </Typography>
                     </Box>
 
